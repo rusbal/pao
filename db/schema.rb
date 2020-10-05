@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_115555) do
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type", null: false
+    t.string "role", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_115555) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.datetime "signed_in_at"
+    t.datetime "signed_out_at"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
