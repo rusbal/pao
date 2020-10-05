@@ -24,19 +24,12 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <%# <% flash.each do |key, value| %1> %>
-        <%#   <div class="alert alert-<%= notice(key) %1> alert-dismissible" role="alert"> %>
-        <%#     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> %>
-        <%#     <%= value %1> %>
-        <%#    </div> %>
-        <%# <% end %1> %>
-
-        <div id="flash">
-          <% flash.each do |key, value| %>
-            <div class="flash <%= key %>"><%= value %></div>
-          <% end %>
-        </div>
-
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= notice(key) %> alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= value %>
+           </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>
