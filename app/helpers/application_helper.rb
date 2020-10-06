@@ -7,4 +7,10 @@ module ApplicationHelper
     ""
   end
 
+  def current_role
+    return "" if current_user.nil?
+
+    "(#{current_user.account.role.capitalize})"
+  end
+
 end
