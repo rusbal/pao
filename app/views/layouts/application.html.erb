@@ -11,7 +11,7 @@
 
 <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Public Attorney's Office</h5>
+  <h5 class="my-0 mr-md-auto font-weight-normal">Public Attorney's Office <%= current_role %></h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <% if signed_in? %>
         <%= link_to 'Requests', open_requests_path %>
