@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
     )
 
     if meeting.save!
-      redirect_to scheduled_requests_url, notice: "Meeting was created"
+      redirect_to open_requests_url, notice: "Meeting was created"
     else
       redirect_to new, error: "Please check your entries"
     end
