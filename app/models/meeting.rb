@@ -15,4 +15,5 @@ class Meeting < ApplicationRecord
                                         STATUS_CANCELLED_BY_OTHER_REASONS,
                                         STATUS_CANCELLED_CLIENT_ABSENT,
                                         STATUS_CANCELLED_LAWYER_ABSENT]) }
+  scope :upcoming,  -> { where(status: nil) }
 end
