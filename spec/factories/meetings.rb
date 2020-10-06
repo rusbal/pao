@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :meeting do
-    scheduled_at { DateTime.current + rand(1..30).days].sample }
+    scheduled_at { DateTime.current + rand(1..30).days.sample }
     # scheduled_at { [DateTime.current - 1.day,
     #                 DateTime.current + rand(1..30).days].sample }
     status { Meeting::STATUS_DEFAULT }
