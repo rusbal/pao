@@ -12,4 +12,14 @@ class Request < ApplicationRecord
   scope :close, -> { where(status: STATUS_CLOSE) }
 
   has_many :meetings
+
+  def last_lawyer?(account)
+    meetings.count > 0 && account == last_meeting.account
+  end
+
+  private
+
+  def last_meeting
+    meetings.last
+  end
 end
