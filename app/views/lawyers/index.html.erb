@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Email</th>
       <th scope="col">Status</th>
       <th scope="col">Signed in</th>
       <th scope="col">Signed out</th>
@@ -13,8 +12,7 @@
   <tbody>
     <% @lawyers.each do |lawyer| %>
       <tr>
-        <td><%= lawyer.name %></td>
-        <td><%= lawyer.user.email %></td>
+        <td><%= link_to lawyer.name, lawyer_path(lawyer) %></td>
         <td><%= lawyer.user.signed_in? ? "Active" : "Not Available" %></td>
         <td><%= lawyer.user.signed_in_at %></td>
         <td><%= lawyer.user.signed_in? ? "" : lawyer.user.signed_out_at %></td>

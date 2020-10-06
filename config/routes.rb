@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :accounts
   resources :admins, only: :index
-  resources :lawyers, only: :index
+  resources :lawyers, only: [:index, :show]
 end
