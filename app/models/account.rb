@@ -18,4 +18,11 @@ class Account < ApplicationRecord
     200
   end
 
+  def can_close?
+    admin?
+  end
+
+  def admin?
+    role == Account::ADMIN
+  end
 end
