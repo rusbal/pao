@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_092030) do
+ActiveRecord::Schema.define(version: 2020_10_06_101206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 2020_10_06_092030) do
     t.string "contact_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "request_id", null: false
+    t.datetime "scheduled_at", null: false
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_meetings_on_account_id"
+    t.index ["request_id"], name: "index_meetings_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -58,5 +69,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_092030) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "meetings", "accounts"
+  add_foreign_key "meetings", "requests"
   add_foreign_key "requests", "clients"
 end

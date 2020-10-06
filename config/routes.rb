@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :requests, only: :index
   resources :open_requests, only: :index
   resources :close_requests, only: :index
+  resources :meetings, only: :index
 end
