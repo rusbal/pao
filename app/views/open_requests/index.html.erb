@@ -26,6 +26,9 @@
           <% end %>
         </td>
         <td>
+          <% if current_user.account.lawyer? %>
+            <%= link_to "Pull", new_request_meetings_path(request), class: "btn btn-secondary" %>
+          <% end %>
           <% if current_user.account.can_close? || request.last_lawyer?(current_user.account) %>
             <%= button_to "Close", { action: "destroy", id: request.id },
                   method: :delete, data: { confirm: "Are you sure?" } %>
