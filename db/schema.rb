@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_101206) do
     t.bigint "account_id", null: false
     t.bigint "request_id", null: false
     t.datetime "scheduled_at", null: false
-    t.string "status"
+    t.string "status", default: "default", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_meetings_on_account_id"

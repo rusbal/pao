@@ -1,4 +1,5 @@
 class Meeting < ApplicationRecord
+  STATUS_DEFAULT                    = "default"
   STATUS_ATTENDED                   = "attended"
   STATUS_CANCELLED_BY_CLIENT        = "cancelled_by_client"
   STATUS_CANCELLED_BY_LAWYER        = "cancelled_by_lawyer"
@@ -15,5 +16,5 @@ class Meeting < ApplicationRecord
                                         STATUS_CANCELLED_BY_OTHER_REASONS,
                                         STATUS_CANCELLED_CLIENT_ABSENT,
                                         STATUS_CANCELLED_LAWYER_ABSENT]) }
-  scope :upcoming,  -> { where(status: nil) }
+  scope :upcoming,  -> { where(status: STATUS_DEFAULT) }
 end

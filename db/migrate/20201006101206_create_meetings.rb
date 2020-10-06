@@ -4,7 +4,7 @@ class CreateMeetings < ActiveRecord::Migration[6.0]
       t.references :account, null: false, foreign_key: true
       t.references :request, null: false, foreign_key: true
       t.datetime :scheduled_at, null: false
-      t.string :status
+      t.string :status, null: false, default: Meeting::STATUS_DEFAULT
 
       t.timestamps
     end

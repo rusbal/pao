@@ -8,10 +8,12 @@ class Request < ApplicationRecord
 
   belongs_to :client
 
-  scope :open,  -> { where(status: STATUS_OPEN) }
-  scope :close, -> { where(status: STATUS_CLOSE) }
-
   has_many :meetings
+  # has_many :with_scheduled_meetings, -> { scheduled }, class_name: 'Meeting'
+
+  scope :open,      -> { where(status: STATUS_OPEN) }
+  scope :close,     -> { where(status: STATUS_CLOSE) }
+  scope :scheduled, -> { includes(:meetings).where(meetings: { status: Meeting::STATUS_DEFAULT }) }
 
   def last_lawyer?(account)
     meetings.count > 0 && account == last_meeting.account
