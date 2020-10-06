@@ -3,4 +3,6 @@ class Client < ApplicationRecord
   FEMALE = "female"
 
   validates :name, presence: true
+
+  has_many :requests
 end
