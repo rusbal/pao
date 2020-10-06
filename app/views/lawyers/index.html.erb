@@ -17,7 +17,7 @@
         <td><%= lawyer.user.email %></td>
         <td><%= lawyer.user.signed_in? ? "Active" : "Not Available" %></td>
         <td><%= lawyer.user.signed_in_at %></td>
-        <td><%= lawyer.user.signed_out_at %></td>
+        <td><%= lawyer.user.signed_in? ? "" : lawyer.user.signed_out_at %></td>
       </tr>
     <% end %>
   </tbody>

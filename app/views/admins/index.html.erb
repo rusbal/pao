@@ -17,7 +17,7 @@
         <td><%= admin.user.email %></td>
         <td><%= admin.user.signed_in? ? "Active" : "Not Available" %></td>
         <td><%= admin.user.signed_in_at %></td>
-        <td><%= admin.user.signed_out_at %></td>
+        <td><%= admin.user.signed_in? ? "" : admin.user.signed_out_at %></td>
       </tr>
     <% end %>
   </tbody>
