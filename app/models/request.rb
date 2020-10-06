@@ -11,7 +11,11 @@ class Request < ApplicationRecord
   has_many :meetings
   # has_many :with_scheduled_meetings, -> { scheduled }, class_name: 'Meeting'
 
-  scope :open,      -> { where(status: STATUS_OPEN) }
+  scope :open,      -> {
+    where(status: STATUS_OPEN)
+      .includes(:meetings)
+      .where.not(meetings: { status: Meeting::STATUS_DEFAULT })
+  }
   scope :close,     -> { where(status: STATUS_CLOSE) }
   scope :scheduled, -> { includes(:meetings).where(meetings: { status: Meeting::STATUS_DEFAULT }) }
 
