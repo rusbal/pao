@@ -8,4 +8,11 @@ class Meeting < ApplicationRecord
 
   belongs_to :account
   belongs_to :request
+
+  scope :attended,  -> { where(status: STATUS_ATTENDED) }
+  scope :cancelled, -> { where(status: [STATUS_CANCELLED_BY_CLIENT,
+                                        STATUS_CANCELLED_BY_LAWYER,
+                                        STATUS_CANCELLED_BY_OTHER_REASONS,
+                                        STATUS_CANCELLED_CLIENT_ABSENT,
+                                        STATUS_CANCELLED_LAWYER_ABSENT]) }
 end

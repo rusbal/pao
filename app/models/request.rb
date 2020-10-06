@@ -10,4 +10,6 @@ class Request < ApplicationRecord
 
   scope :open,  -> { where(status: STATUS_OPEN) }
   scope :close, -> { where(status: STATUS_CLOSE) }
+
+  has_many :meetings
 end
