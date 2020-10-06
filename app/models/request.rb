@@ -9,13 +9,13 @@ class Request < ApplicationRecord
   belongs_to :client
 
   has_many :meetings
-  # has_many :with_scheduled_meetings, -> { scheduled }, class_name: 'Meeting'
 
-  scope :open,      -> {
-    where(status: STATUS_OPEN)
-      .includes(:meetings)
-      .where.not(meetings: { status: Meeting::STATUS_DEFAULT })
-  }
+  scope :waiting, -> do
+    joins(:meetings)
+      .where('meetings.scheduled_at = (SELECT MAX(meetings.scheduled_at) FROM meetings WHERE meetings.request_id = requests.id)')
+      .where('meetings.scheduled_at < ?', DateTime.current)
+  end
+
   scope :close,     -> { where(status: STATUS_CLOSE) }
   scope :scheduled, -> { includes(:meetings).where(meetings: { status: Meeting::STATUS_DEFAULT }) }
 
