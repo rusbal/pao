@@ -25,4 +25,8 @@ class Account < ApplicationRecord
   def admin?
     role == Account::ADMIN
   end
+
+  def lawyer?
+    role == Account::LAWYER
+  end
 end
