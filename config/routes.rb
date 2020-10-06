@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   root "dashboard#index"
 
   resources :accounts
-  resources :admins
+  resources :admins, only: :index
 end
