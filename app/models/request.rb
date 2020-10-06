@@ -10,7 +10,9 @@ class Request < ApplicationRecord
 
   has_many :meetings
 
-  scope :waiting, -> do
+  scope :waiting, -> { }
+
+  scope :x_waiting, -> do
     joins(:meetings)
       .where('meetings.scheduled_at = (SELECT MAX(meetings.scheduled_at) FROM meetings WHERE meetings.request_id = requests.id)')
       .where('meetings.scheduled_at < ?', DateTime.current)
