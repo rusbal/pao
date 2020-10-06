@@ -1,6 +1,6 @@
 class OpenRequestsController < ApplicationController
   def index
-    @requests = Request.open
+    @requests = Request.waiting
   end
 
   def destroy
