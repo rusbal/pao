@@ -10,4 +10,12 @@ class Account < ApplicationRecord
   scope :admins,  -> { where(role: ADMIN) }
   scope :lawyers, -> { where(role: LAWYER) }
 
+  def todays_meeting_count
+    100
+  end
+
+  def future_meeting_count
+    200
+  end
+
 end

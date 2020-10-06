@@ -5,6 +5,8 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Status</th>
+      <th scope="col">Today's Meetings</th>
+      <th scope="col">Future Meetings</th>
       <th scope="col">Signed in</th>
       <th scope="col">Signed out</th>
     </tr>
@@ -14,6 +16,8 @@
       <tr>
         <td><%= link_to lawyer.name, lawyer_path(lawyer) %></td>
         <td><%= lawyer.user.signed_in? ? "Active" : "Not Available" %></td>
+        <td class="centered"><%= lawyer.todays_meeting_count %></td>
+        <td class="centered"><%= lawyer.future_meeting_count %></td>
         <td><%= lawyer.user.signed_in_at %></td>
         <td><%= lawyer.user.signed_in? ? "" : lawyer.user.signed_out_at %></td>
       </tr>
