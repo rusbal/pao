@@ -14,9 +14,9 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">Public Attorney's Office</h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <% if signed_in? %>
+        <%= link_to 'Requests', open_requests_path %>
+        <%= link_to 'History', close_requests_path %>
         <%= link_to 'Lawyers', lawyers_path %>
-        <%= link_to 'Open Requests', open_requests_path %>
-        <%= link_to 'Closed Requests', close_requests_path %>
         <%= link_to 'Admins', admins_path %>
       <% end %>
     </nav>
