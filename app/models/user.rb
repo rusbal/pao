@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_one :account
+
   def signed_in?
     return false if signed_in_at.nil?
     return true  if signed_out_at.nil?
