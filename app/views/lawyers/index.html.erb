@@ -1,0 +1,24 @@
+<h1>Lawyers</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">Signed in</th>
+      <th scope="col">Signed out</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lawyers.each do |lawyer| %>
+      <tr>
+        <td><%= lawyer.name %></td>
+        <td><%= lawyer.user.email %></td>
+        <td><%= lawyer.user.signed_in? ? "Active" : "Not Available" %></td>
+        <td><%= lawyer.user.signed_in_at %></td>
+        <td><%= lawyer.user.signed_out_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

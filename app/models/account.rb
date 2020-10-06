@@ -7,6 +7,7 @@ class Account < ApplicationRecord
   validates :role, inclusion: { in: [ADMIN, LAWYER] }
   validates :name, presence: true
 
-  scope :admins, -> { where(role: ADMIN) }
+  scope :admins,  -> { where(role: ADMIN) }
+  scope :lawyers, -> { where(role: LAWYER) }
 
 end
