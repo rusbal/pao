@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "dashboard#index"
+  root "open_requests#index"
 
   resources :accounts
   resources :admins, only: :index
