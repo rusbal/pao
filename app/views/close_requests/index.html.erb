@@ -1,11 +1,12 @@
-<h1>Requests</h1>
+<h1>Close Requests</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Client Name</th>
       <th scope="col">Nature</th>
-      <th scope="col">Status</th>
+      <th scope="col">Attended Meetings</th>
+      <th scope="col">Cancelled Meetings</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +14,8 @@
       <tr>
         <td><%= link_to request.client.name, request.client %></td>
         <td><%= request.nature %></td>
-        <td><%= request.status %></td>
+        <td class="centered"><%= 100 %></td>
+        <td class="centered"><%= 105 %></td>
       </tr>
     <% end %>
   </tbody>

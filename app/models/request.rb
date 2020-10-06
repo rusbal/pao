@@ -7,4 +7,7 @@ class Request < ApplicationRecord
   STATUS_CLOSE = "close"
 
   belongs_to :client
+
+  scope :open,  -> { where(status: STATUS_OPEN) }
+  scope :close, -> { where(status: STATUS_CLOSE) }
 end
