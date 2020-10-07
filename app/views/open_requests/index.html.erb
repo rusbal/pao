@@ -1,40 +1,12 @@
 <h1>Requests (<%= @requests.count %>)</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Client Name</th>
-      <th scope="col">Nature</th>
-      <th scope="col">Attended Meetings</th>
-      <th scope="col">Cancelled Meetings</th>
-      <th scope="col">Upcoming Meetings</th>
-      <th scope="col">Lawyer</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @requests.each do |request| %>
-      <tr>
-        <td><%= link_to request.client.name, request.client %></td>
-        <td><%= request.nature %></td>
-        <td class="centered"><%= attended_count(request.meetings.attended.count) %></td>
-        <td class="centered"><%= cancelled_count(request.meetings.cancelled.count) %></td>
-        <td class="centered"><%= request.meetings.upcoming.count %></td>
-        <td>
-          <% if request.meetings.any? %>
-            <%= link_to request.meetings.last.account.name, lawyer_path(request.meetings.last.account) %>
-          <% end %>
-        </td>
-        <td>
-          <% if current_user.account.lawyer? %>
-            <%= link_to "Pull", new_request_meetings_path(request), class: "btn btn-secondary" %>
-          <% end %>
-          <% if current_user.account.can_close? || request.last_lawyer?(current_user.account) %>
-            <%= button_to "Close", { action: "destroy", id: request.id },
-                  method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </td>
-      </tr>
+<% if current_user.account.assigned_today? %>
+  <%= render "list" %>
+<% else %>
+  <p>Good day, <%= current_user.account.name_with_title %>.  Please see your schedule below.</p>
+  <ul>
+    <% current_user.account.officers.each do |officer| %>
+      <li><%= "#{officer.weekday} #{officer.am_pm}" %></li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+<% end %>

@@ -3,6 +3,7 @@ class Account < ApplicationRecord
   LAWYER = "lawyer"
 
   belongs_to :user
+  has_many :officers
 
   validates :role, inclusion: { in: [ADMIN, LAWYER] }
   validates :name, presence: true
@@ -28,5 +29,13 @@ class Account < ApplicationRecord
 
   def lawyer?
     role == Account::LAWYER
+  end
+
+  def name_with_title
+    "Atty. #{name}"
+  end
+
+  def assigned_today?
+    Officer.assigned.pluck(:account_id).include? self.id
   end
 end

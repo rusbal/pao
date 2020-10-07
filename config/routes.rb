@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :scheduled_requests, only: [:index, :destroy]
   resources :close_requests, only: :index
   resources :meetings, only: :index
+  resources :officers, only: :index
 end

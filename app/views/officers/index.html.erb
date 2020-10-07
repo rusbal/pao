@@ -1,0 +1,22 @@
+<h1>Officers</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Lawyer</th>
+      <th scope="col">OD</th>
+      <th scope="col">Schedule</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @officers.each do |officer| %>
+      <tr>
+        <td><%= link_to officer.account.name, lawyer_path(officer.account) %></td>
+        <td><%= officer.of_the_day? ? "YES" : "NO" %></td>
+        <td><%= officer.weekday %></td>
+        <td><%= officer.am_pm %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
